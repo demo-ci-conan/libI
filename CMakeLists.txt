@@ -9,7 +9,6 @@ file(GLOB HEADERS include/libI/*)
 
 add_library(libI ${SOURCES} ${HEADERS})
 set_target_properties(libI PROPERTIES CXX_STANDARD 17)
-target_link_libraries(libI PRIVATE CONAN_PKG::libA)
 
 target_include_directories(
     libI PUBLIC
