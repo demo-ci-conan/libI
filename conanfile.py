@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile
 
 class libI(ConanFile):
     name = "libI"
