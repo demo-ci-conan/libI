@@ -4,26 +4,22 @@ class libI(ConanFile):
     name = "libI"
     version = "0.0"
 
-    settings = "os", "arch", "compiler", "build_type"
-    options = {"shared": [True, False]}
-    default_options = {"shared": False}
-
-    generators = "cmake"
+    # No settings/options are necessary, this is header only
+    no_copy_source = True
 
     scm = {"type": "git",
            "url": "auto",
            "revision": "auto"}
 
-    exports_sources = "LICENSE" # to avoid build info bug
+    exports_sources = ["LICENSE", # to avoid build info bug
+                       "include/libI/libI_headerOnly.h"]
 
-    def build(self):
-        cmake = CMake(self)
-        cmake.configure()
-        cmake.build()
-        cmake.install()
+    def requirements(self):
+        self.requires("libJ/0.0@demo/testing")
 
     def package(self):
         self.copy("LICENSE", dst="licenses")
+        self.copy("include/libI/libI_headerOnly.h")
 
-    def package_info(self):
-        self.cpp_info.libs = ["libI",]
+    def package_id(self):
+        self.info.header_only()
