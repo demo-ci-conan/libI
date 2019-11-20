@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake
 
-class LibC(ConanFile):
-    name = "libC"
+class libI(ConanFile):
+    name = "libI"
     version = "0.0"
 
     settings = "os", "arch", "compiler", "build_type"
@@ -29,4 +29,4 @@ class LibC(ConanFile):
         self.copy("LICENSE", dst="licenses")
 
     def package_info(self):
-        self.cpp_info.libs = ["libC",]
+        self.cpp_info.libs = ["libI",]
